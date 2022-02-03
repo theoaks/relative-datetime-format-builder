@@ -1,0 +1,24 @@
+{
+    "name": "theoaks/relative-datetime-format-builder",
+    "description": "Object Oriented approach to building the different relative date/time formats that the strtotime(), DateTime and date_create() parser understands.",
+    "type": "library",
+    "license": "GNU",
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ],
+        "psr-4": {
+            "Oaks\\RelativeDatetimeFormatBuilder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Babatunde Ojerinde",
+            "email": "theoaksgraphix@hotmail.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "webmozart/assert": "^1.10"
+    }
+}
