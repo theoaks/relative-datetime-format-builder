@@ -74,6 +74,24 @@ class RelativeDateTimeFormatBuilder
         return $this->setDay(ordinal: Ordinal::Previous);
     }
 
+    public function addDays(int $n): static
+    {
+        return $this->addUnit(
+            new DayDateFormatUnit(
+                diff: abs($n)
+            )
+        );
+    }
+
+    public function subtractDays(int $n): static
+    {
+        return $this->addUnit(
+            new DayDateFormatUnit(
+                diff: -1 * abs($n)
+            )
+        );
+    }
+
     /**
      * @param DayName|null $day
      * @param Ordinal $ordinal
@@ -173,6 +191,20 @@ class RelativeDateTimeFormatBuilder
         return $this->setOf(MonthName::December);
     }
 
+    public function addMonth(int $n)
+    {
+        $this->addUnit(
+            new MonthDateFormatUnit(diff: abs($n))
+        );
+    }
+
+    public function subtractMonth(int $n)
+    {
+        $this->addUnit(
+            new MonthDateFormatUnit(diff: -abs($n))
+        );
+    }
+
     public function setOf(?MonthName $of, Ordinal $ordinal = Ordinal::This): static
     {
         if (!is_null($of) && $this->hasMonthUnit()) {
@@ -216,6 +248,20 @@ class RelativeDateTimeFormatBuilder
     }
 
     //</editor-fold>
+
+    public function addNOfUnit(Unit $unit, int $n)
+    {
+        $this->addUnit(
+            new DateFormatUnit($unit, diff: abs($n))
+        );
+    }
+
+    public function subtractNOfUnit(Unit $unit, int $n)
+    {
+        $this->addUnit(
+            new DateFormatUnit($unit, diff: -abs($n))
+        );
+    }
 
     public function addUnit(DateFormatUnit $unit): static
     {
@@ -312,7 +358,8 @@ class RelativeDateTimeFormatBuilder
         ?int    $year,
         Ordinal $ordinal = Ordinal::This,
         ?int    $diff = null
-    ): static {
+    ): static
+    {
         if (!is_null($year) && $this->hasYearUnit()) {
             throw new InvalidArgumentException(
                 "A specific year has already been added.
@@ -352,7 +399,8 @@ class RelativeDateTimeFormatBuilder
         int       $minute,
         int       $second,
         ?int      $year = null,
-    ): static {
+    ): static
+    {
         return (new self())
             ->lastDay()
             ->of($monthName)
@@ -371,7 +419,8 @@ class RelativeDateTimeFormatBuilder
         int $hour,
         int $minute,
         int $second
-    ): static {
+    ): static
+    {
         return (new self())
             ->lastDay()
             ->ofThisMonth()
@@ -392,7 +441,8 @@ class RelativeDateTimeFormatBuilder
         int       $minute,
         int       $second,
         ?int      $year = null,
-    ): static {
+    ): static
+    {
         return (new self())
             ->firstDay()
             ->of($monthName)
