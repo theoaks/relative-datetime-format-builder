@@ -2,7 +2,9 @@
   "name": "theoaks/relative-datetime-format-builder",
   "description": "Object Oriented approach to building the different relative date/time formats that the strtotime(), DateTime and date_create() parser understands.",
   "type": "library",
+  "homepage": "https://github.com/theoaks/relative-datetime-format-builder",
   "license": "GNU",
+  "keywords": ["datetime", "formating", "strtotime"],
   "autoload": {
     "classmap": [
       "src/"
@@ -18,7 +20,8 @@
   "authors": [
     {
       "name": "Babatunde Ojerinde",
-      "email": "theoaksgraphix@hotmail.co.uk"
+      "email": "ojerindej@theoaksoft.com",
+      "role": "Developer"
     }
   ],
   "require": {

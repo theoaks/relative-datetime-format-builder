@@ -1,5 +1,5 @@
 # Relative DateTime Format Builder
-Object Oriented approach to building the different relative date/time formats that the strtotime(), DateTime and date_create() parser understands.
+Object-Oriented approach to building the different relative date/time formats that the strtotime(), DateTime and date_create() parser understands.
 [Check The PHP Documentation for details](https://www.php.net/manual/de/datetime.formats.relative.php)
 
 ## How to install
