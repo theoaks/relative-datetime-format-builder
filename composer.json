@@ -3,7 +3,7 @@
   "description": "Object Oriented approach to building the different relative date/time formats that the strtotime(), DateTime and date_create() parser understands.",
   "type": "library",
   "homepage": "https://github.com/theoaks/relative-datetime-format-builder",
-  "license": "GNU",
+  "license": "GPL-3.0-or-later",
   "keywords": ["datetime", "formating", "strtotime"],
   "autoload": {
     "classmap": [
