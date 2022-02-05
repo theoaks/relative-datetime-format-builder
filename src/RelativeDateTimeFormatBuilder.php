@@ -191,18 +191,22 @@ class RelativeDateTimeFormatBuilder
         return $this->setOf(MonthName::December);
     }
 
-    public function addMonth(int $n)
+    public function addMonth(int $n): static
     {
         $this->addUnit(
             new MonthDateFormatUnit(diff: abs($n))
         );
+
+        return $this;
     }
 
-    public function subtractMonth(int $n)
+    public function subtractMonth(int $n): static
     {
         $this->addUnit(
             new MonthDateFormatUnit(diff: -abs($n))
         );
+
+        return $this;
     }
 
     public function setOf(?MonthName $of, Ordinal $ordinal = Ordinal::This): static
@@ -219,12 +223,12 @@ class RelativeDateTimeFormatBuilder
         return $this;
     }
 
-    public function lastMonth(): static
+    public function ofLastMonth(): static
     {
         return $this->setOf(null, Ordinal::Last);
     }
 
-    public function previousMonth(): static
+    public function ofPreviousMonth(): static
     {
         return $this->setOf(null, Ordinal::Previous);
     }
@@ -249,20 +253,6 @@ class RelativeDateTimeFormatBuilder
 
     //</editor-fold>
 
-    public function addNOfUnit(Unit $unit, int $n)
-    {
-        $this->addUnit(
-            new DateFormatUnit($unit, diff: abs($n))
-        );
-    }
-
-    public function subtractNOfUnit(Unit $unit, int $n)
-    {
-        $this->addUnit(
-            new DateFormatUnit($unit, diff: -abs($n))
-        );
-    }
-
     public function addUnit(DateFormatUnit $unit): static
     {
         $this->units[] = $unit;
@@ -273,9 +263,9 @@ class RelativeDateTimeFormatBuilder
     //<editor-fold desc="Time">
     public function at(int $hour = 0, int $minute = 0, int $second = 0): static
     {
-        return $this->setHour($hour)
-            ->setMinute($minute)
-            ->setSecond($second);
+        return $this->atHour($hour)
+            ->atMinute($minute)
+            ->atSecond($second);
     }
 
     private function getTime(): ?string
@@ -296,7 +286,7 @@ class RelativeDateTimeFormatBuilder
      * @param int $hour
      * @return RelativeDateTimeFormatBuilder
      */
-    public function setHour(int $hour = 0): RelativeDateTimeFormatBuilder
+    public function atHour(int $hour = 0): RelativeDateTimeFormatBuilder
     {
         Assert::true(
             oaks_in_between($hour, 0, 23, true),
@@ -307,12 +297,12 @@ class RelativeDateTimeFormatBuilder
         return $this;
     }
 
-    public function noon(): static
+    public function atNoon(): static
     {
         return $this->at(hour: 12);
     }
 
-    public function midnight(): static
+    public function atMidnight(): static
     {
         return $this->at();
     }
@@ -321,7 +311,7 @@ class RelativeDateTimeFormatBuilder
      * @param int $minute
      * @return RelativeDateTimeFormatBuilder
      */
-    public function setMinute(int $minute = 0): RelativeDateTimeFormatBuilder
+    public function atMinute(int $minute = 0): RelativeDateTimeFormatBuilder
     {
         Assert::true(
             oaks_in_between($minute, 0, 59, true),
@@ -336,7 +326,7 @@ class RelativeDateTimeFormatBuilder
      * @param int $second
      * @return RelativeDateTimeFormatBuilder
      */
-    public function setSecond(int $second = 0): RelativeDateTimeFormatBuilder
+    public function atSecond(int $second = 0): RelativeDateTimeFormatBuilder
     {
         Assert::true(
             oaks_in_between($second, 0, 59, true),
