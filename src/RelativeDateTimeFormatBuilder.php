@@ -435,6 +435,24 @@ class RelativeDateTimeFormatBuilder
             ->year($year);
     }
 
+    public static function firstDayOfThisMonth(): static
+    {
+        return (new self())
+            ->firstDay()
+            ->ofThisMonth();
+    }
+
+    public static function firstDayOfThisMonthAt(
+        int  $hour,
+        int  $minute,
+        int  $second,
+    ): static {
+        return (new self())
+            ->firstDay()
+            ->ofThisMonth()
+            ->at(hour: $hour, minute: $minute, second: $second);
+    }
+
     public static function firstDayOfAt(
         MonthName $monthName,
         int       $hour,
