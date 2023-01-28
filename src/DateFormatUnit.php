@@ -5,9 +5,9 @@ namespace Oaks\RelativeDatetimeFormatBuilder;
 class DateFormatUnit
 {
     public function __construct(
-        private Unit     $unit,
-        private Ordinal $ordinal = Ordinal::This,
-        private ?int     $diff = null,
+        private readonly Unit    $unit,
+        private readonly Ordinal $ordinal = Ordinal::This,
+        private readonly ?int    $diff = null,
     ) {
     }
 

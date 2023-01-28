@@ -5,9 +5,9 @@ namespace Oaks\RelativeDatetimeFormatBuilder;
 class DayDateFormatUnit extends DateFormatUnit
 {
     public function __construct(
-        private ?DayName $dayName = null,
-        Ordinal          $ordinal = Ordinal::This,
-        ?int             $diff = null,
+        private readonly ?DayName $dayName = null,
+        Ordinal                   $ordinal = Ordinal::This,
+        ?int                      $diff = null,
     ) {
         parent::__construct(Unit::Day, $ordinal, $diff);
     }
