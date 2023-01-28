@@ -253,6 +253,34 @@ class RelativeDateTimeFormatBuilder
 
     //</editor-fold>
 
+    public function thisWeek(): static
+    {
+        $this->addUnit(new WeekFormatUnit());
+
+        return $this;
+    }
+
+    public function nextWeek(): static
+    {
+        $this->addUnit(new WeekFormatUnit(ordinal: Ordinal::Next));
+
+        return $this;
+    }
+
+    public function addWeeks(int $n): static
+    {
+        $this->addUnit(new WeekFormatUnit(ordinal: Ordinal::Next, diff: abs($n)));
+
+        return $this;
+    }
+
+    public function subtractWeeks(int $n): static
+    {
+        $this->addUnit(new WeekFormatUnit(ordinal: Ordinal::Next, diff: -abs($n)));
+
+        return $this;
+    }
+
     public function addUnit(DateFormatUnit $unit): static
     {
         $this->units[] = $unit;
